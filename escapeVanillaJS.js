@@ -62,3 +62,5 @@ async function navigateLabyrinth(directions) {
   }
   return "Congratulations! You've mastered the essentials of Vanilla JavaScript. Welcome to the world of React, where you'll build powerful and dynamic web applications. Let's dive in!";
 }
+
+// Im having an issue with opening this file on my console  due to a chrome error "been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, isolated-app, chrome-extension, chrome, https, chrome-untrusted."
