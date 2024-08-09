@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("solveRoom2").addEventListener("click", () => {
-    const jsConcepts = new Set(["closure", "scope", "hoisting"]);
-    // 🪲 Bug: What's mssing from JS concepts?
+    const jsConcepts = new Set(["closure", "scope", "hoisting ,async"]);
+    // 🪲 Bug: What's missing from JS concepts?
     const reactConcepts = new Set(["components", "jsx", "hooks", "async"]);
     // 🪲 Bug: Incorrect function call
-    const commonConcepts = findIntersection(jsConcepts, jsConcepts);
+    const commonConcepts = findIntersection(jsConcepts, reactConcepts);
     document.getElementById(
       "room2Result"
     ).textContent = `The code to unlock the door is: ${Array.from(
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((directions) => {
         navigateLabyrinth(directions).then((message) => {
           // 🪲 Bug: Incorrect method
-          document.getElementById("room3Result").innerHTML = message;
+          document.getElementById("room3Result").textContent = message;
         });
       });
   });
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function findMostRecentBook(books) {
   // 🪲 Bug: Logic error
   return books.reduce((mostRecent, book) =>
-    new Date(book.published) < new Date(mostRecent.published)
+    new Date(book.published) > new Date(mostRecent.published) // the logic issue is that a recent book should have a a greater date to be more recent than the  most recently published books
       ? book
       : mostRecent
   );
