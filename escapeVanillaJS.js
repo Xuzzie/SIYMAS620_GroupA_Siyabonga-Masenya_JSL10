@@ -40,23 +40,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function findMostRecentBook(books) {
   // 🪲 Bug: Logic error
-  return books.reduce((mostRecent, book) =>
-    new Date(book.published) > new Date(mostRecent.published) // the logic issue is that a recent book should have a a greater date to be more recent than the  most recently published books
-      ? book
-      : mostRecent
+  return books.reduce(
+    (mostRecent, book) =>
+      new Date(book.published) > new Date(mostRecent.published) // the logic issue is that a recent book should have a a greater date to be more recent than the  most recently published books
   );
 }
 
 function findIntersection(setA, setB) {
-  // 🪲 Bug: Incorrect logic
-  const intersection = new Set([...setA]);
+  // I used chatgpt to help me here cause I was confused  abouth everything in this section  (will work on this during the weekend )
+  const intersection = new Set(
+    [...setA].filter((element) => setB.has(element))
+  );
   return intersection;
 }
 
 async function navigateLabyrinth(directions) {
   for (let direction of directions) {
     // 🪲 Bug: No delay
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // once the promice is fufilled the delay will be set
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // once the promise is fufilled the delay will be set  through the use of "await"
     console.log(`Navigating: ${direction.step}`);
   }
   return "Congratulations! You've mastered the essentials of Vanilla JavaScript. Welcome to the world of React, where you'll build powerful and dynamic web applications. Let's dive in!";
